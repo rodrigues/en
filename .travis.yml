@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.1.2p95
+before_install:
+  - "gem install bundler --no-rdoc --no-ri 1>/dev/null"
+script:
+  - "rspec spec"
