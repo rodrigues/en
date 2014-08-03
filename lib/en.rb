@@ -1,17 +1,21 @@
 require 'en/version'
 
-require 'dotenv'
-
-Dotenv.load
-
 module EN
   extend self
+
+  def load
+    require 'dotenv'
+    Dotenv.load
+    self
+  end
 
   def fetch(variable)
     ENV[variable.to_s.upcase] || begin
       yield if block_given?
     end
   end
+
+  alias_method :[], :fetch
 
   TYPES = {
     int:     method(:Integer),
